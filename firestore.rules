@@ -1,0 +1,112 @@
+rules_version = '2';
+
+// ===============================================================
+// Assumed Data Model
+// ===============================================================
+//
+// Collection: users/{userId}/transactions
+// Document ID: {transactionId} (auto-generated)
+// Fields:
+//   - description: string (required, 1-60 characters) - Transaction description
+//   - amountCents: int (required, integer > 0) - Amount represented in integer cents
+//   - type: string (required, 'income' | 'expense') - Transaction classification
+//   - category: string (required, one of predefined categories)
+//   - date: string (required, format 'YYYY-MM-DD') - Local transaction calendar date
+//   - createdAt: timestamp (required, immutable) - Server creation timestamp
+//
+// ===============================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Default deny all access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    function hasOnlyAllowedFields(fields) {
+      return request.resource.data.keys().hasOnly(fields);
+    }
+
+    function hasRequiredFields(fields) {
+      return request.resource.data.keys().hasAll(fields);
+    }
+
+    function isValidDescription(desc) {
+      return desc is string && desc.size() >= 1 && desc.size() <= 60;
+    }
+
+    function isValidAmountCents(amount) {
+      return amount is int && amount > 0;
+    }
+
+    function isValidType(type) {
+      return type in ['income', 'expense'];
+    }
+
+    function isValidCategory(cat) {
+      return cat in [
+        'Food & Dining',
+        'Rent & Utilities',
+        'Salary & Invoices',
+        'Entertainment',
+        'Transport',
+        'Shopping',
+        'Miscellaneous'
+      ];
+    }
+
+    function isValidDateString(dateStr) {
+      return dateStr is string && dateStr.matches("^\\d{4}-\\d{2}-\\d{2}$");
+    }
+
+    function isValidTransaction(data) {
+      let allowedFields = ['description', 'amountCents', 'type', 'category', 'date', 'createdAt'];
+      let requiredFields = ['description', 'amountCents', 'type', 'category', 'date', 'createdAt'];
+      
+      return hasOnlyAllowedFields(allowedFields) &&
+             hasRequiredFields(requiredFields) &&
+             isValidDescription(data.description) &&
+             isValidAmountCents(data.amountCents) &&
+             isValidType(data.type) &&
+             isValidCategory(data.category) &&
+             isValidDateString(data.date) &&
+             data.createdAt is timestamp;
+    }
+
+    // ===============================================================
+    // User Transactions Collection Rules
+    // ===============================================================
+
+    match /users/{userId}/transactions/{transactionId} {
+      // Allow reading only documents belonging to the authenticated user
+      allow read: if isOwner(userId);
+
+      // Allow creating documents only in the authenticated user's subcollection
+      // Validates schema, constraints, and enforces server timestamp for createdAt
+      allow create: if isOwner(userId) &&
+                       isValidTransaction(request.resource.data) &&
+                       request.resource.data.createdAt == request.time;
+
+      // Allow updating existing documents: must be owner, remain valid, and createdAt must be immutable
+      allow update: if isOwner(userId) &&
+                       isValidTransaction(request.resource.data) &&
+                       request.resource.data.createdAt == resource.data.createdAt;
+
+      // Allow deleting individual documents only by the owner
+      allow delete: if isOwner(userId);
+    }
+  }
+}
