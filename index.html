@@ -2,7 +2,7 @@
 <html lang="en" class="h-full bg-slate-50">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Personal Finance Dashboard - Modern Expense Tracker</title>
   <meta name="description" content="Production-ready real-time personal expense calculator and cash flow tracker powered by Cloud Firestore and Firebase Authentication.">
   
@@ -177,7 +177,7 @@
           <div id="field-auth-name" class="hidden space-y-1">
             <label for="input-auth-name" class="block text-xs font-semibold text-slate-700">Full Name <span class="text-slate-400 font-normal">(Optional)</span></label>
             <div class="relative">
-              <input id="input-auth-name" type="text" autocomplete="name" placeholder="John Doe" class="block w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
+              <input id="input-auth-name" type="text" autocomplete="name" placeholder="John Doe" class="block w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
             </div>
           </div>
 
@@ -185,7 +185,7 @@
           <div class="space-y-1">
             <label for="input-auth-email" class="block text-xs font-semibold text-slate-700">Email Address <span class="text-rose-500">*</span></label>
             <div class="relative">
-              <input id="input-auth-email" type="email" autocomplete="email" required placeholder="name@example.com" class="block w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
+              <input id="input-auth-email" type="email" autocomplete="email" required placeholder="name@example.com" class="block w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
             </div>
             <p id="error-auth-email" class="hidden text-xs text-rose-600 mt-1"></p>
           </div>
@@ -199,7 +199,7 @@
               </button>
             </div>
             <div class="relative">
-              <input id="input-auth-password" type="password" autocomplete="current-password" required minlength="6" placeholder="Minimum 6 characters" class="block w-full pl-3.5 pr-10 py-2.5 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
+              <input id="input-auth-password" type="password" autocomplete="current-password" required minlength="6" placeholder="Minimum 6 characters" class="block w-full pl-3.5 pr-10 py-2.5 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
               <button id="btn-toggle-password" type="button" aria-label="Toggle password visibility" class="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 focus:outline-none">
                 <!-- Eye open icon -->
                 <svg id="icon-eye-open" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
@@ -255,7 +255,7 @@
         </div>
 
         <!-- User Info & Action Buttons -->
-        <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+        <div class="flex flex-wrap items-center gap-2 sm:gap-3 w-full md:w-auto">
           <!-- User Profile Badge -->
           <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-slate-100 rounded-xl text-xs font-medium text-slate-700">
             <div id="user-avatar-initial" class="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-[10px] uppercase">
@@ -368,7 +368,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
         <!-- LEFT COLUMN: ADD / EDIT TRANSACTION CARD (4 cols) -->
-        <section aria-labelledby="form-card-title" class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm sticky top-20">
+        <section aria-labelledby="form-card-title" class="lg:col-span-5 bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm lg:sticky lg:top-20">
           <div class="flex items-center justify-between border-b border-slate-100 pb-4 mb-5">
             <div class="flex items-center gap-2">
               <h2 id="form-card-title" class="text-base font-bold text-slate-900">Add New Transaction</h2>
@@ -411,7 +411,7 @@
                 </label>
                 <span id="char-counter-desc" class="text-[11px] text-slate-400 font-mono">0/60</span>
               </div>
-              <input id="input-description" type="text" maxlength="60" required placeholder="e.g., Grocery Shopping, Monthly Salary" class="block w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
+              <input id="input-description" type="text" maxlength="60" required placeholder="e.g., Grocery Shopping, Monthly Salary" class="block w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
               <p id="error-description" class="hidden text-xs text-rose-600 mt-1"></p>
             </div>
 
@@ -424,7 +424,7 @@
                 <div class="pointer-events-none absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 font-semibold text-sm">
                   $
                 </div>
-                <input id="input-amount" type="number" step="0.01" min="0.01" required placeholder="0.00" class="block w-full pl-8 pr-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
+                <input id="input-amount" type="number" step="0.01" min="0.01" required placeholder="0.00" class="block w-full pl-8 pr-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
               </div>
               <p id="error-amount" class="hidden text-xs text-rose-600 mt-1"></p>
             </div>
@@ -434,7 +434,7 @@
               <label for="select-category" class="block text-xs font-semibold text-slate-700 mb-1">
                 Category <span class="text-rose-500">*</span>
               </label>
-              <select id="select-category" required class="block w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-900 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
+              <select id="select-category" required class="block w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-900 text-base sm:text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
                 <option value="Food & Dining">Food & Dining</option>
                 <option value="Rent & Utilities">Rent & Utilities</option>
                 <option value="Salary & Invoices">Salary & Invoices</option>
@@ -451,7 +451,7 @@
               <label for="input-date" class="block text-xs font-semibold text-slate-700 mb-1">
                 Date <span class="text-rose-500">*</span>
               </label>
-              <input id="input-date" type="date" required class="block w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-900 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
+              <input id="input-date" type="date" required class="block w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-900 text-base sm:text-sm bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition-colors">
               <p id="error-date" class="hidden text-xs text-rose-600 mt-1"></p>
             </div>
 
@@ -471,7 +471,7 @@
         </section>
 
         <!-- RIGHT COLUMN: RECENT TRANSACTIONS (7 cols) -->
-        <section aria-labelledby="feed-card-title" class="lg:col-span-7 bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm flex flex-col min-h-[580px]">
+        <section aria-labelledby="feed-card-title" class="lg:col-span-7 bg-white rounded-2xl p-6 border border-slate-200/80 shadow-sm flex flex-col lg:min-h-[580px]">
           
           <!-- Card Header & Total Count -->
           <div class="flex items-center justify-between pb-4 border-b border-slate-100">
@@ -508,7 +508,7 @@
               <!-- Category Dropdown Filter -->
               <div class="flex-1">
                 <label for="filter-category" class="sr-only">Filter by Category</label>
-                <select id="filter-category" class="w-full px-3 py-1.5 text-xs rounded-xl border border-slate-300 text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <select id="filter-category" class="w-full px-3 py-1.5 text-base sm:text-xs rounded-xl border border-slate-300 text-slate-700 bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500">
                   <option value="ALL">All Categories</option>
                   <option value="Food & Dining">Food & Dining</option>
                   <option value="Rent & Utilities">Rent & Utilities</option>
@@ -529,7 +529,7 @@
                   <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                 </svg>
               </div>
-              <input id="filter-search" type="search" placeholder="Search by description..." class="block w-full pl-9 pr-8 py-1.5 rounded-xl border border-slate-300 text-slate-800 placeholder-slate-400 text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+              <input id="filter-search" type="search" placeholder="Search by description..." class="block w-full pl-9 pr-8 py-1.5 rounded-xl border border-slate-300 text-slate-800 placeholder-slate-400 text-base sm:text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
               <button id="btn-clear-search" type="button" aria-label="Clear search" class="hidden absolute inset-y-0 right-0 pr-2.5 flex items-center text-slate-400 hover:text-slate-600">
                 <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
@@ -671,7 +671,7 @@
       <form id="form-reset-password" class="mt-4 space-y-3" novalidate>
         <div>
           <label for="input-reset-email" class="block text-xs font-semibold text-slate-700 mb-1">Email Address</label>
-          <input id="input-reset-email" type="email" required placeholder="name@example.com" class="block w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+          <input id="input-reset-email" type="email" required placeholder="name@example.com" class="block w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-slate-900 placeholder-slate-400 text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
           <p id="error-reset-email" class="hidden text-xs text-rose-600 mt-1"></p>
         </div>
         <div id="alert-reset-email" class="hidden p-3 rounded-xl text-xs flex items-center gap-2"></div>
